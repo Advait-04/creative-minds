@@ -7,7 +7,7 @@ export default function Nav() {
     const [user, loading] = useAuthState(auth);
     console.log(user);
     return (
-        <nav className="flex justify-between items-center py-10 px-10">
+        <nav className="flex justify-between items-center py-10">
             <Link href={"/"}>
                 <button className="text-lg font-medium">Creative Minds</button>
             </Link>
@@ -23,7 +23,7 @@ export default function Nav() {
                 {user && (
                     <div className="flex items-center gap-6">
                         <Link href={"/post"}>
-                            <button className="font-medium bg-cyan-500 text-white py-2 px-4 rounded-mg text-sm">
+                            <button className="font-medium bg-cyan-500 text-white py-2 px-4 rounded-md text-sm">
                                 Post
                             </button>
                         </Link>
@@ -36,7 +36,7 @@ export default function Nav() {
                                 height={50}
                             /> */}
                             <img
-                                className="w-11 rounded-full cursor-pointer"
+                                className="w-12 rounded-full cursor-pointer"
                                 src={user.photoURL}
                                 alt=" "
                             />
