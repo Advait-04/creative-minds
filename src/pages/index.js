@@ -10,6 +10,7 @@ import {
     query,
     QuerySnapshot,
 } from "firebase/firestore";
+import Link from "next/link";
 
 export default function Home() {
     //create a state with all the posts
@@ -49,7 +50,22 @@ export default function Home() {
             <div className="my-12 text-lg font-medium">
                 <h2 className="text-2xl">See what others are saying</h2>
                 {allPosts.map((post) => (
-                    <Message {...post} key={post.id}></Message>
+                    <Message {...post} key={post.id}>
+                        <Link
+                            href={{
+                                pathname: `/${post.id}`,
+                                query: { ...post },
+                            }}
+                        >
+                            <button>
+                                {post.comments?.length > 0
+                                    ? post.comments?.length
+                                    : 0}
+                                {"  "}
+                                comments
+                            </button>
+                        </Link>
+                    </Message>
                 ))}
             </div>
         </div>
